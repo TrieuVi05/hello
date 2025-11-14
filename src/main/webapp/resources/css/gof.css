@@ -1,0 +1,9 @@
+/* gof.css - small utilities used by the design */
+h1 { font-weight: 600; color: #333; }
+h1 img { vertical-align: middle; }
+.panel { border-radius: 2px; box-shadow: none; border-color: #ddd; }
+.table > tbody > tr > td, .table > thead > tr > th { vertical-align: middle; }
+.table tbody tr:hover { background: #f8fafd; }
+.table .radio { margin: 0; }
+.key-table th { background: #efefef; font-weight: 600; }
+.key-table td input.form-control { width: 100%; }
