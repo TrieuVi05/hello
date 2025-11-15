@@ -6,11 +6,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>hsf301.fe.com</groupId>
-    <artifactId>HSF301_Chapter_08_Management_Student</artifactId>
+    <artifactId>ManagementStudent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>HSF301_Chapter_08_Management_Student</name>
+    <name>ManagementStudent</name>
 
     <properties>
         <java.version>17</java.version>
@@ -74,4 +74,8 @@
             <version>11.2.0.jre17</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <finalName>ManagementStudent</finalName>
+    </build>
 </project>

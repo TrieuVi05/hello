@@ -1,7 +1,7 @@
 (function($, window){
   function fillFormFromRow($row){
     var tds = $row.find('td');
-    // assume columns: 0=choose,1=ID,2=FirstName,3=LastName,4=Mark
+    // assume columns: 0=radio,1=ID,2=FirstName,3=LastName,4=Mark
     var id = $.trim(tds.eq(1).text());
     var first = $.trim(tds.eq(2).text());
     var last = $.trim(tds.eq(3).text());
@@ -9,18 +9,18 @@
     $('input[name="id"]').val(id);
     $('input[name="firstName"]').val(first);
     $('input[name="lastName"]').val(last);
-    $('input[name="mark"]').val(mark);
+    $('input[name="marks"]').val(mark);
   }
 
   function clearForm(){
     $('input[name="id"]').val('');
     $('input[name="firstName"]').val('');
     $('input[name="lastName"]').val('');
-    $('input[name="mark"]').val('');
+    $('input[name="marks"]').val('');
   }
 
   function getSelectedRow(){
-    var $radio = $('table').find('input[type=radio]:checked');
+    var $radio = $('input[type=radio].student-radio:checked');
     if($radio.length === 0) return null;
     return $radio.closest('tr');
   }
@@ -33,13 +33,14 @@
 
   $(function(){
     // when a radio is changed, fill the form
-    $(document).on('change', 'table input[type=radio]', function(){
+    $(document).on('change', 'input[type=radio].student-radio', function(){
       var $tr = $(this).closest('tr');
       fillFormFromRow($tr);
     });
 
     // button handlers
     $(document).on('click', '#btnAdd', function(){
+      clearForm();
       if(window.LbsValidate && !window.LbsValidate.validateForm()) return;
       submitWithAction('add');
     });
@@ -57,7 +58,7 @@
     });
 
     // auto-fill if a radio already checked on load
-    var $checked = $('table').find('input[type=radio]:checked');
+    var $checked = $('input[type=radio].student-radio:checked');
     if($checked.length) $checked.trigger('change');
   });
 

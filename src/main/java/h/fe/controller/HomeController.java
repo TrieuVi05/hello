@@ -21,8 +21,11 @@ public class HomeController {
 
     // 1. TRANG CHỦ (Chỉ ánh xạ tới "/")
     @RequestMapping(value = {"/", "/layouts-blank"}, method = RequestMethod.GET)
-    public String LayoutBlank(){
-        return "layouts-blank";
+    public String LayoutBlank(Model model){
+        IStudentRepository studentRepository = new StudentRepository("JPAs");
+        List<Student> students = studentRepository.findAll();
+        model.addAttribute("studentsList", students);
+        return "home";
     }
     
     // 2. TRANG CÀI ĐẶT TÀI KHOẢN (Chỉ ánh xạ tới địa chỉ cụ thể)
